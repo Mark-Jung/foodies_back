@@ -1,0 +1,1 @@
+# shitnews_api

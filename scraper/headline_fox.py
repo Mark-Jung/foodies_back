@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup, SoupStrainer
 url = 'http://www.foxnews.com/'
 response = requests.get(url)
 html = response.content
-
 soup = BeautifulSoup(html, "html.parser")
 
 # Latest News

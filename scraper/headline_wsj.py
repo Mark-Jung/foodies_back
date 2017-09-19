@@ -5,9 +5,7 @@ from bs4 import BeautifulSoup, SoupStrainer
 url = 'https://www.wsj.com/'
 response = requests.get(url)
 html = response.content
-
 soup = BeautifulSoup(html, "html.parser")
-
 
 # headline
 def getHeadline():
@@ -15,10 +13,5 @@ def getHeadline():
     	for head in headline.find_all('h3', class_='wsj-headline'):
     		for a in head.find_all('a'):
     			print (a.text)
-
-#head = soup.find_all('a')
-#headline = head.string
-#headline = soup.find_all('article', class_='story')
-#head = soup.find_all(class_='story-heading')
 
 getHeadline();

@@ -6,8 +6,8 @@ from nltk.corpus import stopwords
 
 url = str(sys.argv[1])
 with open(url, 'r') as f:
-	text = f.read()
-	text = text.lower()
+    text = f.read()
+    text = text.lower()
 
 # Removes stopwords from the text
 stop_words = set(stopwords.words('english'))
@@ -24,16 +24,16 @@ tagged = nltk.pos_tag(tokens)
 text = []
 result = []
 for item in tagged:
-	if item[1][0] == 'N':
-		text.append(item[0])
+    if item[1][0] == 'N':
+        text.append(item[0])
 
 text = [word.replace("'", "") for word in text]
 text = str(text)
 
 def moreThanThreementions(text):
-	for word, freq in word_freq.most_common():
-		if (freq >= 3):
-			result.append("%s %d" % (word, freq))
-	return result
+    for word, freq in word_freq.most_common():
+        if (freq >= 3):
+            result.append("%s %d" % (word, freq))
+    return result
 
 moreThanThreementions(text)

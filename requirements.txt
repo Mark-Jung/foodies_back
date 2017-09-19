@@ -1,3 +1,4 @@
 Flask
 Flask-Restful
+Flask-SQLAlchemy
 boto3

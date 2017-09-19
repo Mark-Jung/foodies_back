@@ -20,6 +20,5 @@ def getTrendNews():
 
 print ('Latest News:')
 getLatestNews()
-
 print ('Trends:')
 getTrendNews()

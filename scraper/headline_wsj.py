@@ -10,8 +10,8 @@ soup = BeautifulSoup(html, "html.parser")
 # headline
 def getHeadline():
     for headline in soup.find_all('div', class_='wsj-list'):
-    	for head in headline.find_all('h3', class_='wsj-headline'):
-    		for a in head.find_all('a'):
-    			print (a.text)
+        for head in headline.find_all('h3', class_='wsj-headline'):
+            for a in head.find_all('a'):
+                print (a.text)
 
 getHeadline();

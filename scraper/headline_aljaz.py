@@ -1,5 +1,6 @@
 import requests, re
 from bs4 import BeautifulSoup, SoupStrainer
+from sorting import moreThanThreeMentions
 
 url = 'http://www.aljazeera.com/'
 response = requests.get(url)
@@ -8,17 +9,19 @@ soup = BeautifulSoup(html, "html.parser")
 
 # Lastest News
 def getLatestNews():
+    result = ''
     for div in soup.find_all('div', class_='latest-news-topic'):
         for a in div.find_all('h4'):
-            print (a.text)
+            result = result + ' ' + a.text
+    return result
 
 # Trend News
 def getTrendNews():
+    trendResult = ''
     for div in soup.find_all('div', class_='news-trending-txt'):
         for p in div.find_all('p'):
-            print (p.text)
+            trendResult = trendResult + ' ' + p.text
+    return trendResult
 
-print ('Latest News:')
-getLatestNews()
-print ('Trends:')
-getTrendNews()
+text = getLatestNews() + getTrendNews()
+print(moreThanThreeMentions(text))

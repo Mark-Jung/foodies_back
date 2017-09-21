@@ -30,8 +30,10 @@ def moreThanThreeMentions(text):
     result = ''
     for word, freq in word_freq.most_common():
         if (freq >= 3):
-            result = result + (str(freq) + ' ' + word.strip("'").strip("',") + "\n")
-            #result.append(("%d %s" % (freq, word)))
+            # store format: 
+            # {"word":"placeholder","freq": 22},
+            result += ('"word"'+':'+word+'"freq"'+':'+str(freq)+ "\n")
+            #result += (str(freq) + ' ' + word.strip("'").strip("',") + "\n")
     return result
 
 def moreThanTwoMentions(text):

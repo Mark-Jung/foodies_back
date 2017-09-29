@@ -1,8 +1,9 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api
 
 from resources.words import Words
+from scraper.update_all import update_all
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -13,8 +14,12 @@ api = Api(app)
 def create_tables():
     db.create_all()
 
-api.add_resource(Words, '/words/<string:name>' )
+@app.before_first_request
+def fill_tables():
+    update_all();
 
+
+api.add_resource(Words, '/words/<string:name>')
 
 if __name__ == "__main__":
     from db import db

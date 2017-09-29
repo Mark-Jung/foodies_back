@@ -12,4 +12,5 @@ def getHeadline():
     for span in soup.find_all('span', class_="cd__headline-text"):
         print (span.text)
 
-getHeadline()
+def get_cnn_words():
+    return getHeadline;

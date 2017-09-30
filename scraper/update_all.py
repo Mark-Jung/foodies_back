@@ -6,7 +6,7 @@ from .headline_theblaze import get_theblaze_words
 from .headline_wsj import get_wsj_words
 from models.words import WordModel
 
-def get_words(self, name):
+def scrape_words(name):
     if name == "aljaz":
         return get_aljaz_words()
     elif name == "cnn":
@@ -20,15 +20,21 @@ def get_words(self, name):
     elif name == "wsj":
         return get_wsj_words()
 
-def update_single(self, name):
-    news_org = find_by_name(name)
+def update_single(name):
+    news_org = WordModel.find_by_name(name)
+    print (news_org)
+    # if news_org cannot be found, add new
     if news_org is None:
-        new = WordModel(name, get_words(name))
+        new = WordModel(name, scrape_words(name))
         new.save_to_db()
-    news_org.words = get_words(name)
-    news_org.save_to_db()
+    else:
+        news_org.words = scrape_words(name)
+        news_org.save_to_db()
+    # if found, load new, and
+    # news_org.words = scrape_words(name)
+    # news_org.save_to_db()
 
-def update_all(self):
+def update_all():
     all_news_orgs = ["aljaz", "cnn", "fox", "nyt", "theblaze", "wsj"]
     for name in all_news_orgs:
         update_single(name)

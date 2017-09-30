@@ -1,5 +1,5 @@
 import requests
-import lxml .html .usedoctest
+import  html
 from bs4 import BeautifulSoup, SoupStrainer
 
 url = 'http://us.cnn.com/'

@@ -1,5 +1,4 @@
 import requests, re
-from lxml import html
 from bs4 import BeautifulSoup, SoupStrainer
 from .sorting import moreThanThreeMentions
 

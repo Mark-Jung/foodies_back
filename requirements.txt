@@ -4,5 +4,5 @@ Flask-SQLAlchemy
 boto3
 BeautifulSoup4
 requests
-nltk==3.2.4
+https://pypi.python.org/packages/cc/87/76e691bbf1759ad6af5831649aae6a8d2fa184a1bcc71018ca6300399e5f/nltk-3.2.5.tar.gz#md5=73a33f58da26a18e8d40ef630a40b599
 uwsgi

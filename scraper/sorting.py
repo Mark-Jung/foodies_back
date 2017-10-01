@@ -3,7 +3,7 @@ import collections
 import re
 import sys
 import nltk
-from nltk import word_tokenize, pos_tag, averaged_perceptron_tagger
+from nltk import word_tokenize, pos_tag
 from nltk.corpus import stopwords
 
 # Create NLTK data directory

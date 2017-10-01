@@ -1,7 +1,6 @@
 import requests, re
-from lxml import html
 from bs4 import BeautifulSoup, SoupStrainer
-from sorting import moreThanThreeMentions
+from .sorting import moreThanThreeMentions
 
 url = 'http://www.foxnews.com/'
 response = requests.get(url)
@@ -18,6 +17,6 @@ def getLatestNews():
                     result = result + ' ' + a.text
     return result
 
-text = getLatestNews()
-print(moreThanThreeMentions(text))
-
+def get_fox_words():
+    text = getLatestNews()
+    return moreThanThreeMentions(text)

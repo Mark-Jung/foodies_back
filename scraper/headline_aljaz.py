@@ -1,6 +1,6 @@
 import requests, re
 from bs4 import BeautifulSoup, SoupStrainer
-from sorting import moreThanThreeMentions
+from .sorting import moreThanThreeMentions
 
 url = 'http://www.aljazeera.com/'
 response = requests.get(url)
@@ -23,5 +23,6 @@ def getTrendNews():
             trendResult = trendResult + ' ' + p.text
     return trendResult
 
-text = getLatestNews() + getTrendNews()
-print(moreThanThreeMentions(text))
+def get_aljaz_words():
+    text = getLatestNews() + getTrendNews()
+    return moreThanThreeMentions(text)

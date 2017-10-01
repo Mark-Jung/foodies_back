@@ -1,14 +1,12 @@
 import requests
-from lxml import html
 from bs4 import BeautifulSoup, SoupStrainer
-from sorting import  moreThanThreeMentions
+from .sorting import  moreThanThreeMentions
 
 url = 'https://www.wsj.com/'
 response = requests.get(url)
 html = response.content
 soup = BeautifulSoup(html, "html.parser")
 
-# headline
 def getHeadline():
     result =''
     for headline in soup.find_all('div', class_='wsj-list'):
@@ -17,5 +15,6 @@ def getHeadline():
                 result = result + ' ' + a.text
     return result
 
-text = getHeadline()
-print(moreThanThreeMentions(text))
+def get_wsj_words():
+    text = getHeadline()
+    return moreThanThreeMentions(text)

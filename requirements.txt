@@ -4,5 +4,5 @@ Flask-SQLAlchemy
 boto3
 BeautifulSoup4
 requests
-nltk
-collections
+nltk==3.2.4
+uwsgi

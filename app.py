@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template
 from flask_restful import Api
+from db import db
 
 from resources.words import Words
 from scraper.update_all import update_all

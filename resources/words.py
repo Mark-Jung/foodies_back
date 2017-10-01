@@ -16,7 +16,7 @@ class Words(Resource):
         item = WordModel.find_by_name(name)
         if item is None:
             return {'message': 'Item not allowed. Check spelling.'}, 400
-        return item.get_words(name)
+        return item.json()
 
     def post(self, name):
         item = WordModel.find_by_name(name)

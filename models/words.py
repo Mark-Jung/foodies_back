@@ -25,6 +25,5 @@ class WordModel(db.Model):
     def find_by_name(cls, name):
         return cls.query.filter_by(name=name).first()
 
-    def get_words(self, name):
-
-        return find_by_name.json();
+    def get_words(self):
+        return self.json();

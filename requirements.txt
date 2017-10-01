@@ -5,3 +5,4 @@ boto3
 BeautifulSoup4
 requests
 nltk==3.2.4
+uwsgi

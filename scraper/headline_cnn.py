@@ -1,5 +1,4 @@
 import requests
-import  html
 from bs4 import BeautifulSoup, SoupStrainer
 
 url = 'http://us.cnn.com/'

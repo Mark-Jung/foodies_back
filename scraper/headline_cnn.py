@@ -9,8 +9,10 @@ soup = BeautifulSoup(html, "html.parser")
 
 # headline
 def getHeadline():
+    result = ''
     for span in soup.find_all('span', class_="cd__headline-text"):
-        print (span.text)
+        result = result + ' ' + a.text
+    return result
 
 def get_cnn_words():
-    return getHeadline;
+    return getHeadline();

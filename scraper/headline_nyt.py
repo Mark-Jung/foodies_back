@@ -15,5 +15,12 @@ def getHeadline():
     return result
 
 def get_nyt_words():
+    text = ''
     text = getHeadline()
     return moreThanThreeMentions(text)
+
+# checking if result is in string format
+# and it is a string... 
+#if (isinstance (get_nyt_words(), str)):
+#   print(get_nyt_words())
+

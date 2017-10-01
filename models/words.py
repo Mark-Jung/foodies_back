@@ -8,7 +8,7 @@ class WordModel(db.Model):
     __tablename__ = 'words'
 
     name = db.Column(db.String(80), primary_key=True)
-    words = db.Column(db.String(1900))
+    words = db.Column(db.String(19000))
 
     def __init__(self, name, words):
         self.name = name

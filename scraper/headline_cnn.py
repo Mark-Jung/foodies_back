@@ -1,5 +1,5 @@
 import requests
-import lxml .html .usedoctest
+import  html
 from bs4 import BeautifulSoup, SoupStrainer
 
 url = 'http://us.cnn.com/'
@@ -9,7 +9,10 @@ soup = BeautifulSoup(html, "html.parser")
 
 # headline
 def getHeadline():
+    result = ''
     for span in soup.find_all('span', class_="cd__headline-text"):
-        print (span.text)
+        result = result + ' ' + a.text
+    return result
 
-getHeadline()
+def get_cnn_words():
+    return getHeadline();

@@ -2,7 +2,7 @@ import collections
 import re
 import sys
 import nltk
-from nltk.corpus import stopwords
+# from nltk.corpus import stopwords
 
 
 # Removes stopwords from the text

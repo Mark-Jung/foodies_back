@@ -2,7 +2,7 @@ Flask
 Flask-Restful
 Flask-SQLAlchemy
 boto3
-BeautifulSoup
+BeautifulSoup4
 requests
 nltk
 collections

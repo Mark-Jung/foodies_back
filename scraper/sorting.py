@@ -1,9 +1,17 @@
+import os
 import collections
 import re
 import sys
 import nltk
 from nltk import word_tokenize, pos_tag, averaged_perceptron_tagger
 from nltk.corpus import stopwords
+
+# Create NLTK data directory
+NLTK_DATA_DIR = './nltk_data'
+if not os.path.exists(NLTK_DATA_DIR):
+        os.makedirs(NLTK_DATA_DIR)
+
+nltk.data.path.append(NLTK_DATA_DIR)
 
 # Removes stopwords from the text
 stop_words = set(stopwords.words('english'))

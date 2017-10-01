@@ -2,3 +2,4 @@ punkt
 stopwords
 word_tokenize
 pos_tag
+averaged_perceptron_tagger

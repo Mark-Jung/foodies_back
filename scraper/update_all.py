@@ -22,7 +22,6 @@ def scrape_words(name):
 
 def update_single(name):
     news_org = WordModel.find_by_name(name)
-    print (news_org)
     # if news_org cannot be found, add new
     if news_org is None:
         new = WordModel(name, scrape_words(name))
@@ -30,11 +29,9 @@ def update_single(name):
     else:
         news_org.words = scrape_words(name)
         news_org.save_to_db()
-    # if found, load new, and
-    # news_org.words = scrape_words(name)
-    # news_org.save_to_db()
 
 def update_all():
+    print("hi hi")
     all_news_orgs = ["aljaz", "cnn", "fox", "nyt", "theblaze", "wsj"]
     for name in all_news_orgs:
         update_single(name)

@@ -1,4 +1,3 @@
-import os
 from flask import Flask, render_template
 from flask_restful import Api
 from db import db
@@ -17,12 +16,11 @@ def create_tables():
 
 @app.before_first_request
 def fill_tables():
-    update_all();
-
+    update_all()
 
 api.add_resource(Words, '/words/<string:name>')
 
 if __name__ == "__main__":
     from db import db
     db.init_app(app)
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=True, threaded=True)

@@ -31,7 +31,6 @@ def update_single(name):
         news_org.save_to_db()
 
 def update_all():
-    print("hi hi")
     all_news_orgs = ["aljaz", "cnn", "fox", "nyt", "theblaze", "wsj"]
     for name in all_news_orgs:
         update_single(name)

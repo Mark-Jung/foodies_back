@@ -1,6 +1,8 @@
 import os
 from os import path
 from wordcloud import WordCloud
+import random
+
 from .headline_aljaz import get_aljaz_words
 from .headline_cnn import get_cnn_words
 from .headline_fox import get_fox_words
@@ -10,6 +12,10 @@ from .headline_wsj import get_wsj_words
 from models.words import WordModel
 
 current = path.dirname(__file__)
+
+def grey_color_func(word, font_size, position, orientation, random_state=None,
+                    **kwargs):
+    return "hsl(0, 0%%, %d%%)" % random.randint(60, 100)
 
 def scrape_words(name):
     if name == "aljaz":
@@ -33,7 +39,7 @@ def update_single(name):
         new.save_to_db()
         # if news_org scraping script worked
         if (len(new.words) > 0):
-            wordcloud = WordCloud().generate(new.words)
+            wordcloud = WordCloud(color_func=grey_color_func).generate(new.words)
             new.path = current + "/" + name + ".png"
             wordcloud.to_file(new.path)
             new.save_to_db()

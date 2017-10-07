@@ -7,4 +7,4 @@ requests
 nltk==3.2.5
 uwsgi
 wordcloud
-matplotlib
+numpy

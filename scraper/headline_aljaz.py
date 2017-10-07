@@ -25,4 +25,4 @@ def getTrendNews():
 
 def get_aljaz_words():
     text = getLatestNews() + getTrendNews()
-    return moreThanThreeMentions(text)
+    return text

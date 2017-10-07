@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup, SoupStrainer
-from .sorting import  moreThanThreeMentions
 
 url = 'https://www.wsj.com/'
 response = requests.get(url)

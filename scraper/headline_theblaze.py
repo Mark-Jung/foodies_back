@@ -1,6 +1,5 @@
 import requests, re
 from bs4 import BeautifulSoup, SoupStrainer
-from .sorting import moreThanTwoMentions
 
 url = 'http://www.theblaze.com/'
 response = requests.get(url)

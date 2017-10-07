@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup, SoupStrainer
-from .sorting import moreThanThreeMentions
 
 url = 'https://www.nytimes.com/'
 response = requests.get(url)
@@ -18,6 +17,3 @@ def get_nyt_words():
     text = ''
     text = getHeadline()
     return text
-
-
-

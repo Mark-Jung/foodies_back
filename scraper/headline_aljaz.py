@@ -1,6 +1,5 @@
 import requests, re
 from bs4 import BeautifulSoup, SoupStrainer
-from .sorting import moreThanThreeMentions
 
 url = 'http://www.aljazeera.com/'
 response = requests.get(url)

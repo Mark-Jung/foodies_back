@@ -17,4 +17,4 @@ def getHeadline():
 
 def get_theblaze_words():
     text = getHeadline()
-    return moreThanTwoMentions(text)
+    return text

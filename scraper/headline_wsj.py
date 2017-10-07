@@ -17,4 +17,4 @@ def getHeadline():
 
 def get_wsj_words():
     text = getHeadline()
-    return moreThanThreeMentions(text)
+    return text

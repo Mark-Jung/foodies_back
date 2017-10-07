@@ -19,4 +19,4 @@ def getLatestNews():
 
 def get_fox_words():
     text = getLatestNews()
-    return moreThanThreeMentions(text)
+    return text

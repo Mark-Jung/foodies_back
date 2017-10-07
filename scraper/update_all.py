@@ -1,14 +1,15 @@
 from os import path
+import os
 from wordcloud import WordCloud
-from .headline_aljaz_full import get_aljaz_words
-from .headline_cnn_full import get_cnn_words
-from .headline_fox_full import get_fox_words
-from .headline_nyt_full import get_nyt_words
-from .headline_theblaze_full import get_theblaze_words
-from .headline_wsj_full import get_wsj_words
+from .headline_aljaz import get_aljaz_words
+from .headline_cnn import get_cnn_words
+from .headline_fox import get_fox_words
+from .headline_nyt import get_nyt_words
+from .headline_theblaze import get_theblaze_words
+from .headline_wsj import get_wsj_words
 from models.words import WordModel
 
-d = path.dirname(__file__)
+current = path.dirname(__file__)
 
 def scrape_words(name):
     if name == "aljaz":
@@ -18,8 +19,7 @@ def scrape_words(name):
     elif name == "fox":
         return get_fox_words()
     elif name == "nyt":
-        text = get_nyt_words()
-        return text
+        return get_nyt_words()
     elif name == "theblaze":
         return get_theblaze_words()
     elif name == "wsj":
@@ -31,21 +31,20 @@ def update_single(name):
     if news_org is None:
         new = WordModel(name, scrape_words(name))
         new.save_to_db()
-        # print(new.words)
-        wordcloud = WordCloud().generate(new.words)
-        wordcloud.to_file(path.join(d, str(name)+".png"))
-        wordcloud.to_image().show()
+        # if news_org scraping script worked,
+        if (len(new.words) > 0):
+            wordcloud = WordCloud().generate(new.words)
+            new.path = current + "/" + name + ".png"
+            wordcloud.to_file(new.path)
+            new.save_to_db()
     else:
         news_org.words = scrape_words(name)
         news_org.save_to_db()
-        if (len(news_org.words) == 0):
-            pass
-        else:
-            # print(news_org.words)
+        if (len(news_org.words) > 0):
+            # remove image and remake
+            os.remove(news_org.path)
             wordcloud = WordCloud().generate(news_org.words)
-            wordcloud.to_file(path.join(d, str(name)+".png"))
-            wordcloud.to_image().show()
-
+            wordcloud.to_file(news_org.path)
 
 def update_all():
     all_news_orgs = ["aljaz", "cnn", "fox", "nyt", "theblaze", "wsj"]

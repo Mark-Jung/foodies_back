@@ -1,5 +1,5 @@
-from os import path
 import os
+from os import path
 from wordcloud import WordCloud
 from .headline_aljaz import get_aljaz_words
 from .headline_cnn import get_cnn_words

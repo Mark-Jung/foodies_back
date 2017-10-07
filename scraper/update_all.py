@@ -49,7 +49,7 @@ def update_single(name):
         if (len(news_org.words) > 0):
             # remove and remake image
             os.remove(news_org.path)
-            wordcloud = WordCloud().generate(news_org.words)
+            wordcloud = WordCloud(color_func=grey_color_func).generate(news_org.words)
             wordcloud.to_file(news_org.path)
 
 def update_all():

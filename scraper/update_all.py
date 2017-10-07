@@ -41,7 +41,7 @@ def update_single(name):
         news_org.words = scrape_words(name)
         news_org.save_to_db()
         if (len(news_org.words) > 0):
-            # remove image and remake
+            # remove and remake image
             os.remove(news_org.path)
             wordcloud = WordCloud().generate(news_org.words)
             wordcloud.to_file(news_org.path)

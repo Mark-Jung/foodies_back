@@ -31,7 +31,7 @@ def update_single(name):
     if news_org is None:
         new = WordModel(name, scrape_words(name))
         new.save_to_db()
-        # if news_org scraping script worked,
+        # if news_org scraping script worked
         if (len(new.words) > 0):
             wordcloud = WordCloud().generate(new.words)
             new.path = current + "/" + name + ".png"

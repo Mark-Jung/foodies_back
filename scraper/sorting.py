@@ -39,6 +39,11 @@ def moreThanThreeMentions(text):
         if (freq >= 3):
             result = result + (str(freq) + ' ' + word.strip("'").strip("',") + ' ')
     return result
+    # result = []
+    # for word, freq in word_freq.most_common():
+    #     if (freq >= 3):
+    #         result.push(("freq:"+ freq + ", " "word:" + word.strip("'").strip("',")))
+    # return result
 
 def moreThanTwoMentions(text):
     text = text.lower()

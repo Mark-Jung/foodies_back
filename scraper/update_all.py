@@ -1,3 +1,5 @@
+from os import path
+from wordcloud import WordCloud
 from .headline_aljaz import get_aljaz_words
 from .headline_cnn import get_cnn_words
 from .headline_fox import get_fox_words
@@ -14,7 +16,8 @@ def scrape_words(name):
     elif name == "fox":
         return get_fox_words()
     elif name == "nyt":
-        return get_nyt_words()
+        text = get_nyt_words()
+        return text
     elif name == "theblaze":
         return get_theblaze_words()
     elif name == "wsj":
@@ -30,7 +33,15 @@ def update_single(name):
         news_org.words = scrape_words(name)
         news_org.save_to_db()
 
+def generate_image(name):
+    text = scrape_words(name)
+    wordcloud = WordCloud().generate(text)
+    image = wordcloud.to_image()
+    image.show()
+        
+
 def update_all():
     all_news_orgs = ["aljaz", "cnn", "fox", "nyt", "theblaze", "wsj"]
     for name in all_news_orgs:
         update_single(name)
+        generate_image(name)

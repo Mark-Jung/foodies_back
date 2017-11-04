@@ -1,5 +1,0 @@
-punkt
-stopwords
-word_tokenize
-pos_tag
-

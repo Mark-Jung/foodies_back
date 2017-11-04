@@ -1,9 +1,6 @@
 Flask
 Flask-Restful
 Flask-SQLAlchemy
-boto3
 BeautifulSoup4
 requests
-nltk==3.2.5
 uwsgi
-wordcloud

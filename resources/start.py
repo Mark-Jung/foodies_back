@@ -87,12 +87,12 @@ class Start(Resource):
             if business is None:
                 address = '\n'.join(each['location']['display_address']).strip('[]')
                 business = BusinessModel(each['name'], address, each['id'], each['rating'], each['price'], each['display_phone'])
+                print("new! " + business.yelp_id)
                 photo_ids = get_id(business.yelp_id)
                 for x in range(0, 3):
                     photomodel = PhotoModel(photo_ids[x], business.yelp_id)
                     photomodel.save_to_db()
                 business.photo_ids = str(photo_ids)
-                print("new! " + business.yelp_id)
                 business.save_to_db()
             for x in range(0, 3):
                 unrandomized.append(ast.literal_eval(business.photo_ids)[x])

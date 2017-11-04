@@ -97,10 +97,10 @@ class Start(Resource):
             for x in range(0, 3):
                 unrandomized.append(ast.literal_eval(business.photo_ids)[x])
 
-        # randomized = []
-        # for x in range(0, 30):
-        #     photo_id = unrandomized[random.randint(0, 59)]
-        #     randomized.append(PhotoModel.find_by_photo_id(photo_id).json())
-        #
-        # return randomized
-        return unrandomized
+        randomized = []
+        for x in range(0, 30):
+            photo_id = unrandomized[random.randint(0, 59)]
+            randomized.append(PhotoModel.find_by_photo_id(photo_id).json())
+
+        return randomized
+        # return unrandomized

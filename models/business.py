@@ -24,16 +24,19 @@ class BusinessModel(db.Model):
         self.phone_number = phone_number
         self.photo_ids = ''
 
-    def json(self):
-        return {'name': self.name, 'photo_ids': self.photo_ids}
+    def json(self, photo_id):
+        return {
+                'name': self.name,
+                'price': self.price,
+                'phone_number': self.phone_number,
+                'address': self.address,
+                'photo_id': photo_id
+            }
 
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
-    def find_by_name(cls, yelp_id):
+    def find_by_yelp_id(cls, yelp_id):
         return cls.query.filter_by(yelp_id=yelp_id).first()
-
-    # def get_words(self):
-    #     return self.json();

@@ -70,7 +70,7 @@ class Start(Resource):
         businesses = response.json()['businesses']
         unrandomized = []
         for each in businesses:
-            business = BusinessModel.find_by_name(each['id'])
+            business = BusinessModel.find_by_yelp_id(each['id'])
             if business is None:
                 address = '\n'.join(each['location']['display_address']).strip('[]')
                 business = BusinessModel(each['name'], address, each['id'], each['rating'], each['price'], each['display_phone'])

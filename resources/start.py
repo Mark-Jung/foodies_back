@@ -81,26 +81,26 @@ class Start(Resource):
             return {"message": "Yelp api call went wrong"}, 500
 
         businesses = response.json()['businesses']
-        # unrandomized = []
-        # for each in businesses:
-        #     business = BusinessModel.find_by_yelp_id(each['id'])
-        #     if business is None:
-        #         address = '\n'.join(each['location']['display_address']).strip('[]')
-        #         business = BusinessModel(each['name'], address, each['id'], each['rating'], each['price'], each['display_phone'])
-        #         photo_ids = get_id(business.yelp_id)
-        #         for x in range(0, 3):
-        #             photomodel = PhotoModel(photo_ids[x], business.yelp_id)
-        #             photomodel.save_to_db()
-        #         business.photo_ids = str(photo_ids)
-        #         print("new! " + business.yelp_id)
-        #         business.save_to_db()
-        #     for x in range(0, 3):
-        #         unrandomized.append(ast.literal_eval(business.photo_ids)[x])
-        #
+        unrandomized = []
+        for each in businesses:
+            business = BusinessModel.find_by_yelp_id(each['id'])
+            if business is None:
+                address = '\n'.join(each['location']['display_address']).strip('[]')
+                business = BusinessModel(each['name'], address, each['id'], each['rating'], each['price'], each['display_phone'])
+                photo_ids = get_id(business.yelp_id)
+                for x in range(0, 3):
+                    photomodel = PhotoModel(photo_ids[x], business.yelp_id)
+                    photomodel.save_to_db()
+                business.photo_ids = str(photo_ids)
+                print("new! " + business.yelp_id)
+                business.save_to_db()
+            for x in range(0, 3):
+                unrandomized.append(ast.literal_eval(business.photo_ids)[x])
+
         # randomized = []
         # for x in range(0, 30):
         #     photo_id = unrandomized[random.randint(0, 59)]
         #     randomized.append(PhotoModel.find_by_photo_id(photo_id).json())
         #
         # return randomized
-        return businesses
+        return unrandomized

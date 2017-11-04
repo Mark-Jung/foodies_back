@@ -1,6 +1,5 @@
 from app import app
 from db import db
-from scraper.update_all import update_all
 
 db.init_app(app)
 

@@ -1,5 +1,6 @@
-# shitnews_api
-shitty ass news
+# foodies_back
+The savior for lost foodies, for those who hold too much love to give.
+
 
 ### Initial Setup
 ```

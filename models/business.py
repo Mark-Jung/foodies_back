@@ -7,9 +7,9 @@ from db import db
 class BusinessModel(db.Model):
     __tablename__ = 'business'
 
-    name = db.Column(db.String(100), primary_key=True)
+    yelp_id = db.Column(db.String(100), primary_key=True)
     address = db.Column(db.String(100))
-    yelp_id = db.Column(db.String(100))
+    name = db.Column(db.String(100))
     rating = db.Column(db.String(10))
     price = db.Column(db.Integer)
     phone_number = db.Column(db.String(20))
@@ -32,10 +32,8 @@ class BusinessModel(db.Model):
         db.session.commit()
 
     @classmethod
-    def find_by_name(cls, name):
-        return cls.query.filter_by(name=name).first()
-
-
+    def find_by_name(cls, yelp_id):
+        return cls.query.filter_by(yelp_id=yelp_id).first()
 
     # def get_words(self):
     #     return self.json();

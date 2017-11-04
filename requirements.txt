@@ -3,5 +3,4 @@ Flask-Restful
 Flask-SQLAlchemy
 BeautifulSoup4
 requests
-requests_oauthlib
 uwsgi

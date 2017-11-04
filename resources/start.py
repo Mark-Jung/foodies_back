@@ -27,10 +27,16 @@ class Start(Resource):
         help="This field cannot be left blank: longitude"
     )
 
-    parser.add_argument('price',
+    parser.add_argument('low_price',
         type=int,
         required=True,
-        help="This field cannot be left blank: price"
+        help="This field cannot be left blank: low_price"
+    )
+
+    parser.add_argument('high_price',
+        type=int,
+        required=True,
+        help="This field cannot be left blank: high_price"
     )
 
     parser.add_argument('radius',
@@ -49,13 +55,20 @@ class Start(Resource):
         return objects in form url, name
         """
         data = Start.parser.parse_args()
-        if 5 < data["price"] < 0:
-            return {"message": "price should be in range of 1 to 5"}, 400
+        if data["low_price"] < 1 or data["low_price"] > 4:
+            return {"message": "price should be in range of 1 to 4"}, 400
+        if data["high_price"] < 1 or data["high_price"] > 4:
+            return {"message": "price should be in range of 1 to 4"}, 400
+        price_range = ''
+        for price in range(data['low_price'], data['high_price']):
+            price_range += (str(price) + ', ')
+        price_range += str(data['high_price'])
         url_params = {
             'term': 'restaurants',
             'latitude': data['lat'],
             'longitude': data['long'],
-            'price': data['price'],
+            # 'price': range(data['low_price'], data['high_price']),
+            'price': price_range,
             'limit': 20,
             'radius': data['radius']
         }
@@ -86,7 +99,7 @@ class Start(Resource):
 
         randomized = []
         for x in range(0, 30):
-            photo_id = unrandomized[random.randint(0, 60)]
+            photo_id = unrandomized[random.randint(0, 59)]
             randomized.append(PhotoModel.find_by_photo_id(photo_id).json())
 
         return randomized

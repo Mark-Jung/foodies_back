@@ -80,7 +80,7 @@ class Start(Resource):
         if response is None:
             return {"message": "Yelp api call went wrong"}, 500
 
-        # businesses = response.json()['businesses']
+        businesses = response.json()['businesses']
         # unrandomized = []
         # for each in businesses:
         #     business = BusinessModel.find_by_yelp_id(each['id'])
@@ -103,4 +103,4 @@ class Start(Resource):
         #     randomized.append(PhotoModel.find_by_photo_id(photo_id).json())
         #
         # return randomized
-        return response.json()
+        return businesses

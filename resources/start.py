@@ -79,7 +79,11 @@ class Start(Resource):
         if response is None:
             return {"message": "Yelp api call went wrong"}, 500
 
-        businesses = response.json()['businesses']
+        try:
+            businesses = response.json()['businesses']
+        except:
+            return response.json(), 500
+
         unrandomized = []
         for each in businesses:
             business = BusinessModel.find_by_yelp_id(each['id'])

@@ -68,7 +68,7 @@ class Start(Resource):
             'latitude': data['lat'],
             'longitude': data['long'],
             'price': price_range,
-            'limit': 20,
+            'limit': 15,
             'radius': data['radius']
         }
         headers = {
@@ -89,7 +89,7 @@ class Start(Resource):
                 print("new! " + business.yelp_id)
                 photo_ids = get_id(business.yelp_id)
                 print("done scraping photo urls!")
-                
+
                 for x in range(0, 3):
                     photomodel = PhotoModel(photo_ids[x], business.yelp_id)
                     photomodel.save_to_db()

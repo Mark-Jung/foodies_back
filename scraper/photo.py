@@ -14,7 +14,7 @@ def get_id(yelp_id):
             for image in soup.find_all('img', class_='photo-box-img'):
                 result.append(image.get('src'));
     length = len(result)
-    print("The " + yelp_id + "has " + length + " many pictures!")
+    print("The " + yelp_id + "has " + str(length) + " many pictures!")
     final=[]
     for i in range(0, 3):
       index = random.randint(0,length-1)

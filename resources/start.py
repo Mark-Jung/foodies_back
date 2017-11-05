@@ -68,7 +68,7 @@ class Start(Resource):
             'latitude': data['lat'],
             'longitude': data['long'],
             'price': price_range,
-            'limit': 15,
+            'limit': 50,
             'radius': data['radius']
         }
         headers = {

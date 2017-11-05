@@ -20,5 +20,14 @@ class PhotoModel(db.Model):
         db.session.commit()
 
     @classmethod
+    def find_by_photo_yelp_id(cls, photo_id, yelp_id):
+        return cls.query.filter_by(photo_id=photo_id).filter_by(yelp_id=yelp_id).first()
+
+
+    @classmethod
     def find_by_photo_id(cls, photo_id):
         return cls.query.filter_by(photo_id=photo_id).first()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()

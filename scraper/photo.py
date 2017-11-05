@@ -8,14 +8,17 @@ def get_id(yelp_id):
     response = requests.get(foodtab_url)
     html = response.content
     soup = BeautifulSoup(html, "html.parser")
-    pic_board = soup.find('ul', {'class': 'photo-box-grid'})
-    all_li = pic_board.find_all('li')
     result = []
-    
-    for x in range(0, 3):
-        result.append(base_url + "select=" + all_li[x]['data-photo-id'])
-
-    return result
+    for temp in soup.find_all('ul', class_='photo-box-grid'):
+        for div in soup.find_all('div', class_='photo-box'):
+            for image in soup.find_all('img', class_='photo-box-img'):
+                result.append(image.get('src'));
+    length = len(result)
+    final=[]
+    for i in range(0, 3):
+      index = random.randint(1,length)
+      final.append(result[index])
+    return final
 
 def get_count(yelp_id):
     base_url = "https://www.yelp.com/biz_photos/" + yelp_id + "?"

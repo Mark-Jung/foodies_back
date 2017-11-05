@@ -4,7 +4,8 @@ from db import db
 class PhotoModel(db.Model):
     __tablename__ = 'photo'
 
-    photo_id = db.Column(db.String(100), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    photo_id = db.Column(db.String(100))
     yelp_id = db.Column(db.String(100))
 
     def __init__(self, photo_id, yelp_id):

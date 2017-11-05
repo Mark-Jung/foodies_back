@@ -67,7 +67,6 @@ class Start(Resource):
             'term': 'restaurants',
             'latitude': data['lat'],
             'longitude': data['long'],
-            # 'price': range(data['low_price'], data['high_price']),
             'price': price_range,
             'limit': 20,
             'radius': data['radius']

@@ -68,7 +68,7 @@ class Start(Resource):
             'latitude': data['lat'],
             'longitude': data['long'],
             'price': price_range,
-            'limit': 50,
+            'limit': 15,
             'radius': data['radius']
         }
         headers = {
@@ -100,6 +100,6 @@ class Start(Resource):
                 unrandomized.append(ast.literal_eval(business.photo_ids)[x])
         randomized = []
         for x in range(0, 30):
-            photo_id = unrandomized[random.randint(0, 59)]
+            photo_id = unrandomized[random.randint(0, 30)]
             randomized.append(PhotoModel.find_by_photo_id(photo_id).json())
         return randomized

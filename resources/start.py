@@ -68,7 +68,7 @@ class Start(Resource):
             'latitude': data['lat'],
             'longitude': data['long'],
             'price': price_range,
-            'limit': 15,
+            'limit': 50,
             'radius': data['radius']
         }
         headers = {
@@ -105,4 +105,3 @@ class Start(Resource):
             randomized.append(PhotoModel.find_by_photo_id(photo_id).json())
 
         return randomized
-        # return unrandomized

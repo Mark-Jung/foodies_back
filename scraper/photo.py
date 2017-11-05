@@ -2,10 +2,10 @@ import requests, json, random
 from bs4 import BeautifulSoup
 
 def get_id(yelp_id):
-    base_url = "https://www.yelp.com/biz_photos/" + yelp_id + "?"
-    foodtab_url = base_url + "tab=food"
+    base_url = "https://www.yelp.com/biz_photos/" + yelp_id
+    # foodtab_url = base_url + "tab=food"
 
-    response = requests.get(foodtab_url)
+    response = requests.get(base_url)
     html = response.content
     soup = BeautifulSoup(html, "html.parser")
     result = []

@@ -100,15 +100,16 @@ class Start(Resource):
                 business.photo_ids = str(photo_ids)
                 business.save_to_db()
             elif PhotoModel.find_by_photo_yelp_id("http://kstatic.inven.co.kr/upload/2017/06/22/bbs/i13335449248.jpg", business.yelp_id) and business.yelp_id == PhotoModel.find_by_photo_yelp_id("http://kstatic.inven.co.kr/upload/2017/06/22/bbs/i13335449248.jpg", business.yelp_id).yelp_id:
+                print(business.yelp_id + " currently has 0 photos")
+                print("Rescrapting starts now")
                 photo_ids = get_id(business.yelp_id)
-                print("rescraping photo urls!")
                 for x in range(0, 3):
                     photomodel = PhotoModel(photo_ids[x], business.yelp_id)
                     photomodel.save_to_db()
                     PhotoModel.find_by_photo_yelp_id("http://kstatic.inven.co.kr/upload/2017/06/22/bbs/i13335449248.jpg", business.yelp_id).delete_from_db()
-                print("done saving actual photo urls to db!")
                 business.photo_ids = str(photo_ids)
                 business.save_to_db()
+                print("done saving actual photo urls to db!")
             for x in range(0, 3):
                 unrandomized.append(ast.literal_eval(business.photo_ids)[x])
         randomized = []

@@ -16,7 +16,7 @@ def get_id(yelp_id):
     length = len(result)
     final=[]
     for i in range(0, 3):
-      index = random.randint(1,length)
+      index = random.randint(0,length-1)
       final.append(result[index])
     return final
 

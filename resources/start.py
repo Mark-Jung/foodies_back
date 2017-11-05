@@ -88,9 +88,11 @@ class Start(Resource):
                 business = BusinessModel(each['name'], address, each['id'], each['rating'], each['price'], each['display_phone'])
                 print("new! " + business.yelp_id)
                 photo_ids = get_id(business.yelp_id)
+                print("done scraping photo urls!")
                 for x in range(0, 3):
                     photomodel = PhotoModel(photo_ids[x], business.yelp_id)
                     photomodel.save_to_db()
+                print("done saving photo urls to db!")
                 business.photo_ids = str(photo_ids)
                 business.save_to_db()
             for x in range(0, 3):
